@@ -97,7 +97,10 @@ async function bootstrap() {
     });
 
   app.enableCors({
-    origin: (origin, cb) => {
+    origin: (
+      origin: string | undefined,
+      cb: (error: Error | null, allow?: boolean) => void,
+    ) => {
       // same-origin / server-to-server / mobile WebView sem Origin
       if (!origin) return cb(null, true);
       if (corsOrigins.some((o) => o.replace(/\/$/, '') === origin)) {
