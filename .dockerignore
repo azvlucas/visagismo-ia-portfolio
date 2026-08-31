@@ -1,0 +1,25 @@
+# Acelera o contexto enviado ao Docker e melhora hit de cache
+.git
+.github
+**/.turbo
+**/node_modules
+**/dist
+**/.next
+**/.data
+**/*.md
+!README.md
+docs
+.env
+.env.*
+!.env.example
+**/*.log
+**/.DS_Store
+**/coverage
+**/.vscode
+**/.idea
+apps/web/.next
+apps/api/dist
+apps/worker/dist
+packages/*/dist
+# não precisa da imagem web no build da API (e vice-versa é por Dockerfile)
+# (o compose ainda envia o contexto; ignore reduz bytes)

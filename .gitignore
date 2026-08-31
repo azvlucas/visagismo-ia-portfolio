@@ -1,0 +1,45 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build
+dist
+.next
+.turbo
+out
+build
+*.tsbuildinfo
+
+# env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE / OS
+.idea
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# logs / coverage
+logs
+*.log
+coverage
+.nyc_output
+
+# drizzle: keep SQL migrations + journal in git (needed for docker migrate)
+# Do not ignore packages/db/drizzle/
+
+# misc
+tmp
+*.pem
+.data
+apps/api/.data
+
+# Agent skills locais (não versionar — instalação pessoal)
+.agents/
+.claude/skills/
+agent/
+skills-lock.json

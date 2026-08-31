@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Evita overflow horizontal (botões / grids no mobile) */
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  @apply bg-gold-400/30 text-ink-950;
+}
+
+:focus-visible {
+  outline: 2px solid #c4922e;
+  outline-offset: 2px;
+}
+
+.section-pad {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.container-narrow {
+  @apply mx-auto w-full max-w-6xl;
+}
+
+.btn-primary {
+  @apply inline-flex max-w-full items-center justify-center rounded-full bg-ink-950 px-5 py-3 text-sm font-semibold leading-snug text-ink-50 shadow-lg shadow-ink-950/10 transition hover:bg-ink-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500;
+  /* Quebra texto longo em telas estreitas em vez de estourar */
+  white-space: normal;
+  text-align: center;
+  word-break: break-word;
+}
+
+.btn-secondary {
+  @apply inline-flex max-w-full items-center justify-center rounded-full border border-ink-300 bg-white/70 px-5 py-3 text-sm font-semibold leading-snug text-ink-800 backdrop-blur transition hover:border-ink-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500;
+  white-space: normal;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Empilha CTAs no mobile */
+.btn-row {
+  @apply flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap;
+}
+
+.btn-row > .btn-primary,
+.btn-row > .btn-secondary,
+.btn-row > a.btn-primary,
+.btn-row > a.btn-secondary {
+  @apply w-full sm:w-auto sm:min-w-[10rem];
+}
+
+.card {
+  @apply rounded-2xl border border-ink-200/80 bg-white/80 p-4 shadow-sm backdrop-blur sm:rounded-3xl sm:p-6;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.input {
+  @apply w-full max-w-full rounded-xl border border-ink-300 bg-white px-3 py-2.5 text-base text-ink-900 outline-none ring-gold-500/0 transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/30;
+  /* text-base (16px) evita zoom automático no iOS */
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* details summary chevron reset for FAQ */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Sticky CTA mobile com safe area (iPhone home indicator) */
+.mobile-sticky-cta {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* Espaço no rodapé da página quando sticky CTA está visível */
+.pb-mobile-sticky {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  .pb-mobile-sticky {
+    padding-bottom: 0;
+  }
+}
